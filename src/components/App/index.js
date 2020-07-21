@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
 
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
@@ -9,13 +9,32 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import VideoCreate from './videos/VideoCreate';
+import VideoEdit from './videos/VideoEdit';
+import VideoDelete from './videos/VideoDelete';
+import VideoList from './videos/VideoList';
+import VideoShow from './videos/VideoShow';
+import Header from './Header';
+import history from '../history';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 
 const App = () => (
-  <Router>
-    <div >
+    
+    <div className="ui container">
+      <Router history={history}>
+        <div>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={VideoList} />
+            <Route path="/videos/new" exact component={VideoCreate} />
+            <Route path="/videos/edit/:id" exact component={VideoEdit} />
+            <Route path="/videos/delete/:id" exact component={VideoDelete} />
+            <Route path="/videos/:id" exact component={VideoShow} />
+          </Switch>
+        </div>
+        <div >
       <Navigation />
       <hr/>
       <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -31,7 +50,8 @@ const App = () => (
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       </div>
     </div>
-  </Router>
+      </Router>
+    </div>
 );
 
 export default withAuthentication(App);
