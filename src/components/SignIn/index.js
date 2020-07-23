@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
+import GoogleLogin from 'react-google-login';
+import GoogleButton from 'react-google-button'
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
-  <div>
+  <div style={{margin:'auto',width:'50%'}}>
     <h1>Welcome to Vibe Army</h1>
     <SignInForm />
     <SignInGoogle />
-    <SignInFacebook />
-    <SignInTwitter />
+    {/* <SignInFacebook />
+    <SignInTwitter /> */}
     <PasswordForgetLink />
     <SignUpLink />
   </div>
@@ -118,18 +119,20 @@ let styles = {
     
   },
   input:{
-    width: 200, 
-    height: 20,
-    margin:5
+    width: 300, 
+    height: 30,
+    margin:5,
+    border:'1px solid #ced4da'
   },
   button:{
     width: 200, 
-    height: 30,
-    margin:5,
-    background: 'red',
+    height: 40,
+    margin:5,  
+    borderColor:'black',
+    border: '30px',
+    color: 'white',
+    backgroundColor:'rgb(66, 133, 244)'
   
-    border: 8,
-    color: 'white'
   }
 }
 
@@ -171,8 +174,9 @@ class SignInGoogleBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Google</button>
-
+         <GoogleButton style={styles.button} 
+         onClick={this.onSubmit}
+                ></GoogleButton>
         {error && <p>{error.message}</p>}
       </form>
     );
@@ -217,7 +221,7 @@ class SignInFacebookBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Facebook</button>
+        <button type="submit" style={styles.button}>Sign In with Facebook</button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -263,7 +267,7 @@ class SignInTwitterBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Twitter</button>
+        <button type="submit" style={styles.button}>Sign In with Twitter</button>
 
         {error && <p>{error.message}</p>}
       </form>

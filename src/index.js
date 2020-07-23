@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import App from './components/App';
+import App from './components/App/index';
 import reducers from './reducers';
 import Firebase, { FirebaseContext } from './components/Firebase';
 

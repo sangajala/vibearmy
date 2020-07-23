@@ -19,15 +19,15 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-  <ul>
-    <li>
+  <ul style={{textAlign:'right',listStyle:'none'}}>
+    {/* <li>
       <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
+    </li> */}
+    {/* <li>
       <Link to={ROUTES.HOME}>Home</Link>
-    </li>
+    </li> */}
     <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
+      <Link to={ROUTES.ACCOUNT}>My Account</Link>
     </li>
     {!!authUser.roles[ROLES.ADMIN] && (
       <li>
@@ -41,10 +41,10 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
+  <ul style={{textAlign:'right',listStyle:'none'}}>
+    {/* <li>
       <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
+    </li> */}
     <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
